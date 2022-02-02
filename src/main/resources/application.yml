@@ -1,0 +1,42 @@
+spring:
+  thymeleaf:
+    cache: 'false'
+    prefix: classpath:templates/
+    encoding: utf-8
+    check-template-location: 'true'
+    suffix: .html
+    order: '0'
+    mode: HTML
+    view-names: thymeleaf/*
+  mvc:
+    log-resolved-exception: true
+    converters:
+      preferred-json-mapper: gson
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+  web:
+    resources:
+      static-locations:
+        - classpath:/static/
+      cache:
+        period: 0
+  jackson:
+    property-naming-strategy: LOWER_CAMEL_CASE
+    output:
+      ansi:
+        enabled: always
+
+server:
+  tomcat:
+    basedir: .
+    remoteip:
+      remote-ip-header: X-Forwarded-For
+      protocol-header: framework
+  error:
+    include-exception: false
+    include-stacktrace: never
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: mybatis-mapper/**/*.xml
